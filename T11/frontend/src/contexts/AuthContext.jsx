@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 
 // TODO: get the BACKEND_URL.
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
 /*
  * This provider should export a `user` context state that is 
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
         // user info
         const fetchUser = async () => {
             try {
-                const res = await fetch(`${BACKEND_URL}/user/me`, {
+                const res = await fetch(`${VITE_BACKEND_URL}/user/me`, {
                     method: "GET",
                     headers: {
                         "Authorization": `Bearer ${token}`,
@@ -76,7 +76,7 @@ export const AuthProvider = ({ children }) => {
         // TODO: complete me
         // return "TODO: complete me";
         try {
-            const res = await fetch(`${BACKEND_URL}/login`, {
+            const res = await fetch(`${VITE_BACKEND_URL}/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem("token", data.token);
 
             // user info
-            const profileRes = await fetch(`${BACKEND_URL}/user/me`, {
+            const profileRes = await fetch(`${VITE_BACKEND_URL}/user/me`, {
                 method: "GET",
                 headers: {
                     "Authorization": `Bearer ${data.token}`,
@@ -123,7 +123,7 @@ export const AuthProvider = ({ children }) => {
         // TODO: complete me
         // return "TODO: complete me";
         try {
-            const res = await fetch(`${BACKEND_URL}/register`, {
+            const res = await fetch(`${VITE_BACKEND_URL}/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
